@@ -1,20 +1,32 @@
 import React from 'react'
 import { Link as RouterLink } from 'react-router-dom'
-import useSettings from '../hooks/useSettings'
+import { makeStyles } from '@material-ui/core'
 
-const Logo = (props) => {
-  const { settings } = useSettings()
+const useStyles = makeStyles((theme) => ({
+
+  logo: {
+    display: 'flex',
+    color: theme.palette.text.primary,
+    fontSize: '1.4rem',
+    textDecoration: 'none'
+  }
+}))
+
+const Logo = () => {
+  const classes = useStyles()
   return (
 
     <RouterLink
       to="/"
-      style={{ display: 'flex' }}
+      className={classes.logo}
+
     >
-      <img
+      I Keep My Code
+      {/* <img
         alt="Logo"
         src={`/static/images/logo/dua/${settings.theme}.png`}
         {...props}
-      />
+      /> */}
     </RouterLink>
   )
 }

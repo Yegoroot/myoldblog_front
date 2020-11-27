@@ -61,11 +61,6 @@ const Settings = () => {
       ...values,
       [field]: value
     }
-    if (field === 'lang') {
-      newValues.direction = value === 'ar'
-        ? 'rtl'
-        : 'ltr'
-    }
     setValues(newValues)
   }
 
@@ -78,11 +73,6 @@ const Settings = () => {
   return (
     <>
       <Tooltip title={t('components.settings.title')}>
-        {/* <Badge
-          color="secondary"
-          variant="dot"
-          classes={{ badge: classes.badge }}
-        > */}
         <IconButton
           color="inherit"
           onClick={handleOpen}
@@ -92,7 +82,6 @@ const Settings = () => {
             <SettingsIcon />
           </SvgIcon>
         </IconButton>
-        {/* </Badge> */}
       </Tooltip>
       <Popover
         anchorOrigin={{
@@ -117,26 +106,9 @@ const Settings = () => {
           <FormControlLabel
             control={(
               <Switch
-                checked={values.direction === 'rtl'}
-                edge="start"
-                name="direction"
-                disabled={values.lang === 'ar'}
-                onChange={(event) => handleChange('direction', event.target.checked ? 'rtl' : 'ltr')}
-              />
-            )}
-            label="RTL"
-          />
-        </Box>
-        <Box
-          mt={2}
-          px={1}
-        >
-          <FormControlLabel
-            control={(
-              <Switch
                 checked={values.responsiveFontSizes}
                 edge="start"
-                name="direction"
+                name="responsiveFontSizes"
                 onChange={(event) => handleChange('responsiveFontSizes', event.target.checked)}
               />
             )}

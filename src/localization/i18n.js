@@ -3,7 +3,6 @@ import LanguageDetector from 'i18next-browser-languagedetector'
 import { initReactI18next } from 'react-i18next'
 import XHR from 'i18next-xhr-backend'
 import { DEBUG_I18, DEFAULT_LANGUAGE } from 'src/constants'
-import languageAR from './ar/translate.json'
 import languageEN from './en/translate.json'
 import languageRU from './ru/translate.json'
 
@@ -15,7 +14,6 @@ i18n
   .use(initReactI18next)
   .init({
     resources: {
-      ar: languageAR,
       en: languageEN,
       ru: languageRU
     },

@@ -32,13 +32,11 @@
     },
     "homepage": {
       "title": "Home",
-      "stepbystep": "Step by step",
-      "h1": "Learn Arabic App",
-      "description": "A Platform for learninig arabic by comfort manners. We are students who know how make content a little bit easy and pretty. Platform will provide audio, text and another type content for you in-&nbsp;sha Allah by comfort manners",
+      "h1": "Welcome!",
+      "description": "My name is Egor and I am a web developer. I started my career in 2015 from CMS Joomla, Wordpress. After some time, I began to study the front-end frameworks like React and Vue then used them in commercial projects in web studios. Then, through developing like front-end developer I came to Nodejs as part of MERN. Now I'am studing Microservices, and then I plan to learn the Blockchain",
       "readytoexplore": "Ready to explore",
-      "letsgetstarted": "Let's get started with Programs of Education",
-      "gotoprogram": "Go to Programs",
-      "chooselevel": "Please select your level"
+      "letsgetstarted": "Js, Microservices, Docker, etc",
+      "gotoprogram": "Go to"
     },
     "notify": {
       "topic was created": "Topic has been created",

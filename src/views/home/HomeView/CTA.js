@@ -61,7 +61,7 @@ const CTA = ({ className, ...rest }) => {
             color="secondary"
             component={RouterLink}
             to="/programs"
-            variant="contained"
+            variant="outlined"
           >
             {t('homepage.gotoprogram')}
           </Button>

@@ -4,28 +4,18 @@ import clsx from 'clsx'
 import {
   Box,
   Container,
-  Button,
+  // Button,
   Grid,
   Typography,
   makeStyles
 } from '@material-ui/core'
-import { Link as RouterLink } from 'react-router-dom'
+// import { Link as RouterLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { LEVELS, PUBLIC_PROGRAMS_URL } from 'src/constants'
-
-const setColorButton = (color) => ({
-  color,
-  borderColor: `${color}85`,
-  '&:hover': {
-    backgroundColor: `${color}14`,
-    borderColor: color,
-  }
-})
 
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
-    paddingTop: 180,
+    paddingTop: 80,
     paddingBottom: 200,
     [theme.breakpoints.down('md')]: {
       paddingTop: 60,
@@ -37,13 +27,14 @@ const useStyles = makeStyles((theme) => ({
     transformStyle: 'preserve-3d',
     perspective: 1500,
     '& > img': {
-      maxWidth: '90%',
+      maxWidth: '65%',
       height: 'auto',
-      transform: 'rotateY(-35deg) rotateX(15deg)',
+      transform: 'translateX(25%) rotateY(25deg) rotateX(15deg)',
       backfaceVisibility: 'hidden',
       boxShadow: theme.shadows[16]
     }
   },
+
   buttons: {
     marginBottom: theme.spacing(5),
     '&  a': {
@@ -62,17 +53,17 @@ const useStyles = makeStyles((theme) => ({
       height: 'auto'
     }
   },
+  blockTitle: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center'
+  }
   // https://www.materialui.co/colors
   /**
    * Light 400
    * need Light 800
    */
-  level0: setColorButton(theme.palette.rainbow.level0),
-  level1: setColorButton(theme.palette.rainbow.level1),
-  level2: setColorButton(theme.palette.rainbow.level2),
-  level3: setColorButton(theme.palette.rainbow.level3),
-  level4: setColorButton(theme.palette.rainbow.level4),
-  level5: setColorButton(theme.palette.rainbow.level5),
+
 }))
 
 const Hero = ({ className, ...rest }) => {
@@ -93,71 +84,24 @@ const Hero = ({ className, ...rest }) => {
             item
             xs={12}
             md={5}
+            className={classes.blockTitle}
           >
-
-            <Box
-              display="flex"
-              flexDirection="column"
-              height="100%"
+            {/* <div> */}
+            <Typography
+              variant="h1"
+              color="textPrimary"
             >
-              <Box
-                display="flex"
-                flexDirection="column"
-                alignItems="end"
-                className={classes.buttons}
+              {`${t('homepage.h1')}`}
+            </Typography>
+            <Box mt={3}>
+              <Typography
+                variant="body1"
+                color="textSecondary"
               >
-                <Typography
-                  variant="h2"
-                  color="textPrimary"
-                  className={classes.title}
-                >
-                  {t('homepage.chooselevel')}
-                </Typography>
-
-                {
-                LEVELS.map((level, i) => (
-                  <Button
-                    key={level}
-                    component={RouterLink}
-                    to={{
-                      pathname: `${PUBLIC_PROGRAMS_URL}`,
-                      // state: { level },
-                      search: `level=${level}`
-                    }}
-                    variant="outlined"
-                    className={classes[`level${i + 1}`]}
-                  >
-                    {t(`chips.${level}`)}
-                  </Button>
-                ))
-                }
-              </Box>
-
-              <div>
-                <Typography
-                  variant="overline"
-                  color="secondary"
-                >
-                  {t('homepage.stepbystep')}
-                </Typography>
-                <Typography
-                  variant="h1"
-                  color="textPrimary"
-                >
-                  {/* {`${t('homepage.h1')} - ${APP_NAME}`} */}
-                  {`${t('homepage.h1')}`}
-                </Typography>
-                <Box mt={3}>
-                  <Typography
-                    variant="body1"
-                    color="textSecondary"
-                  >
-                    {t('homepage.description')}
-                  </Typography>
-                </Box>
-
-              </div>
+                {t('homepage.description')}
+              </Typography>
             </Box>
+            {/* </div> */}
           </Grid>
           <Grid
             item
@@ -174,7 +118,7 @@ const Hero = ({ className, ...rest }) => {
               <div className={classes.image}>
                 <img
                   alt="Presentation"
-                  src="/static/images/calligraphy/calligraphy8.jpg"
+                  src="/static/images/home.png"
                 />
               </div>
             </Box>

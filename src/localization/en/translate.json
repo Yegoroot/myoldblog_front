@@ -109,11 +109,10 @@
       "ar": "العربية" ,
       "en": "English" ,
       "ru": "Русский",
-      "beginner": "Beginner",
-      "elementary": "Elementary",
-      "preintermediate": "Pre Intermediate",
-      "intermediate": "Intermediate",
-      "upperintermediate": "Upper Intermediate" 
+      "psy": "Psychology",
+      "cs": "Cyber Security",
+      "web": "Web Development",
+      "linux": "Linux"
     },
     "pageNotFound": {
       "title": "404: Not found",

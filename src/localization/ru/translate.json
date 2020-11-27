@@ -110,11 +110,10 @@
       "ar": "العربية" ,
       "en": "English" ,
       "ru": "Русский" ,
-      "beginner": "Начальный",
-      "elementary": "Элементарный",
-      "preintermediate": "На пороге входа",
-      "intermediate": "Средний",
-      "upperintermediate": "Практичный"
+      "psy": "Психология",
+      "cs": "Безопасность",
+      "web": "Веб Разработка",
+      "linux": "Linux"
     },
     "pageNotFound": {
       "title": "404: Не найдено",

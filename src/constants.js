@@ -33,7 +33,7 @@ export const DEBUG_I18 = process.env.NODE_ENV === 'development' // for deb
 
 export const LEVELS = [
   'psy',
-  'ss',
+  'cs',
   'web',
   'linux'
 ]

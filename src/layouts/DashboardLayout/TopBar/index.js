@@ -12,7 +12,10 @@ import {
   makeStyles,
   SvgIcon
 } from '@material-ui/core'
-import { Menu as MenuIcon } from 'react-feather'
+import {
+  Menu as MenuIcon,
+  // Moon, Sun
+} from 'react-feather'
 import Logo from 'src/components/Logo'
 import { THEMES } from 'src/constants'
 import { useTranslation } from 'react-i18next'
@@ -84,6 +87,13 @@ const TopBar = ({
           ml={2}
           flexGrow={1}
         />
+        {/* <IconButton
+          color="inherit"
+        >
+          <SvgIcon fontSize="small">
+            <Moon />
+          </SvgIcon>
+        </IconButton> */}
         <Settings />
         <Account />
 

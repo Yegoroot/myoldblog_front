@@ -40,7 +40,7 @@ export default function SimpleSnackbar() {
       action={(
         <>
           <Button
-            color="secondary"
+            color="primary"
             size="small"
             onClick={handleClose}
           >

@@ -10,10 +10,10 @@ export default {
     lineHeight: 1.167
   },
   h2: {
-    fontWeight: 500,
+    fontWeight: 400,
     fontSize: '2rem',
     letterSpacing: '-0.24px',
-    lineHeight: 1.2
+    lineHeight: 1.1
   },
   h3: {
     fontWeight: 500,

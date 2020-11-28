@@ -21,7 +21,6 @@ const options = {
 }
 
 const useStyles = makeStyles((theme) => ({
-  root: {},
   chip: {
     margin: theme.spacing(1)
   },

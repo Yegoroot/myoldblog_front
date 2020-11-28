@@ -33,10 +33,11 @@
     "homepage": {
       "title": "Home",
       "h1": "Welcome!",
+      "portfolio": "My portfolio",
       "description": "My name is Egor and I am a web developer. I started my career in 2015 from CMS Joomla, Wordpress. After some time, I began to study the front-end frameworks like React and Vue then used them in commercial projects in web studios. Then, through developing like front-end developer I came to Nodejs as part of MERN. Now I'am studing Microservices, and then I plan to learn the Blockchain",
       "readytoexplore": "Ready to explore",
       "letsgetstarted": "Js, Microservices, Docker, etc",
-      "gotoprogram": "Go to"
+      "gotoprogram": "Go to contents"
     },
     "notify": {
       "topic was created": "Topic has been created",
@@ -109,10 +110,9 @@
       "ar": "العربية" ,
       "en": "English" ,
       "ru": "Русский",
-      "psy": "Psychology",
-      "cs": "Cyber Security",
-      "web": "Web Development",
-      "linux": "Linux"
+      "level1": "Juniour",
+      "level2": "Middle",
+      "level3": "Senior"
     },
     "pageNotFound": {
       "title": "404: Not found",

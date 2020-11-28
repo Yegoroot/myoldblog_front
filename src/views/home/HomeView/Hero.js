@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import {
   Box,
   Container,
-  // Button,
+  Button,
   Grid,
   Typography,
   makeStyles
@@ -57,12 +57,10 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center'
+  },
+  link: {
+    width: 'max-content'
   }
-  // https://www.materialui.co/colors
-  /**
-   * Light 400
-   * need Light 800
-   */
 
 }))
 
@@ -93,7 +91,10 @@ const Hero = ({ className, ...rest }) => {
             >
               {`${t('homepage.h1')}`}
             </Typography>
-            <Box mt={3}>
+            <Box
+              mt={3}
+              mb={3}
+            >
               <Typography
                 variant="body1"
                 color="textSecondary"
@@ -101,6 +102,16 @@ const Hero = ({ className, ...rest }) => {
                 {t('homepage.description')}
               </Typography>
             </Box>
+            <Button
+              className={classes.link}
+              color="secondary"
+              variant="outlined"
+              component="a"
+              target="_blank"
+              href="https://itcantobe.com/about/"
+            >
+              {t('homepage.portfolio')}
+            </Button>
             {/* </div> */}
           </Grid>
           <Grid

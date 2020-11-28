@@ -23,6 +23,9 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '100%',
     paddingTop: theme.spacing(3),
     paddingBottom: theme.spacing(3)
+  },
+  filterWrapper: {
+    display: 'flex'
   }
 }))
 
@@ -98,6 +101,7 @@ function ProgramBrowseView({ location, match }) {
         <Box
           mb={3}
           mt={3}
+          className={classes.filterWrapper}
         >
           <Filter
             filter={filter}

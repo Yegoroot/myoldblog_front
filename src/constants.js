@@ -32,10 +32,9 @@ export const ENABLE_REDUX_LOGGER = false
 export const DEBUG_I18 = process.env.NODE_ENV === 'development' // for deb
 
 export const LEVELS = [
-  'psy',
-  'cs',
-  'web',
-  'linux'
+  'level1',
+  'level2',
+  'level3'
 ]
 
 export const LANGUAGES = [

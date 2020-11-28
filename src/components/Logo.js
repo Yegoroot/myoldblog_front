@@ -34,7 +34,7 @@ const Logo = () => {
       4000 // every 3 seconds
     )
 
-    return clearInterval(intervalId)
+    return () => clearInterval(intervalId)
   })
   return (
 

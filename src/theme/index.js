@@ -62,13 +62,13 @@ const themesOptions = [
         paper: colors.common.white
       },
       primary: {
-        main: colors.indigo[600]
+        main: '#61dafb'
       },
       error: {
         main: '#f44336'
       },
       secondary: {
-        main: '#5850EC'
+        main: '#16a1a8'
       },
       text: {
         primary: colors.blueGrey[900],
@@ -103,13 +103,13 @@ const themesOptions = [
         paper: '#282C34'
       },
       primary: {
-        main: '#8a85ff'
+        main: '#16a1a8'
       },
       error: {
         main: '#f44336'
       },
       secondary: {
-        main: '#8a85ff'
+        main: '#61dafb'
       },
       text: {
         primary: '#e6e5e8',

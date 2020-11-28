@@ -25,7 +25,8 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: theme.spacing(3)
   },
   filterWrapper: {
-    display: 'flex'
+    display: 'flex',
+    justifyContent: 'flex-end'
   }
 }))
 

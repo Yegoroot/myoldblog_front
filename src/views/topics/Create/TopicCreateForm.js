@@ -97,6 +97,7 @@ function TopicCreateForm({
       const method = id ? 'put' : 'post'
       const url = id ? `${API_BASE_URL}/topics/${id}` : `${API_BASE_URL}/topics`
       const message = id ? t('notify.topic was updated') : t('notify.topic was created')
+      const setErr = (err) => (id ? err.response.data.error : err.message)
       setLoading(true)
       axios[method](url, data)
         .then((response) => {
@@ -110,6 +111,11 @@ function TopicCreateForm({
           setLoading(false)
           enqueueSnackbar(message, { variant: 'success' })
           history.push(`${redirectUrl}`)
+        })
+        .catch((err) => {
+          setSubmitting(false)
+          setErrors({ submit: setErr(err) })
+          setStatus({ success: false })
         })
     } catch (err) {
       setLoading(false)

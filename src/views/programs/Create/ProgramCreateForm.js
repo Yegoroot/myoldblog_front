@@ -90,6 +90,11 @@ function ProductCreateForm({
             .catch((err) => {
               setErrors({ submit: setErr(err) })
             })
+            .catch((err) => {
+              setSubmitting(false)
+              setErrors({ submit: setErr(err) })
+              setStatus({ success: false })
+            })
         } catch (err) {
           setErrors({ submit: err.message })
           setStatus({ success: false })

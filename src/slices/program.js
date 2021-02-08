@@ -77,6 +77,7 @@ const filter = (params) => {
   if (params.level && params.level.length) {
     fil.level = JSON.stringify(params.level)
   }
+  fil.limit = 35
   return fil
 }
 
@@ -95,7 +96,7 @@ export const getProgramItem = ({ programId, type }) => async (dispatch) => {
 }
 
 // OUTSIDE
-export const getProgramItemRequest = ({ programId, type }) => async (dispatch, getState) => {
+export const getProgramItemRequest = ({ programId, type }) => async (dispatch) => {
   // if (
   //   theSameDocument({ documentId: programId, getState, module })
   // ) {

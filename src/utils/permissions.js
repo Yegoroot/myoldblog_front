@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable camelcase */
 export const ROLES = ['superadmin', 'admin', 'teacher', 'user']
 export const CAN_WORK_WITH_USERS = ['superadmin', 'admin']

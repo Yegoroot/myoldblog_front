@@ -13,7 +13,7 @@ import {
   makeStyles
 } from '@material-ui/core'
 import { useSelector, useDispatch } from 'src/store'
-import { getTopicItemRequest, module } from 'src/slices/topic'
+import { getTopicItemRequest, MODULE } from 'src/slices/topic'
 import LoadingScreen from 'src/components/LoadingScreen'
 import Page from 'src/components/Page'
 import useAuth from 'src/hooks/useAuth'
@@ -42,11 +42,17 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
+const ReloadButton = (onClick) => (
+  <Card onClick={onClick}>
+    <CardContent>Перезагрузить</CardContent>
+  </Card>
+)
+
 function TopicItem({ match, location }) {
   const { user } = useAuth()
   const classes = useStyles()
   const dispatch = useDispatch()
-  const { loading, data } = useSelector((state) => state[module].item)
+  const { loading, data } = useSelector((state) => state[MODULE].item)
   const { topicId, programId } = match.params
   const [selectedImage, setSelectedImage] = useState(null)
 
@@ -58,21 +64,25 @@ function TopicItem({ match, location }) {
 
   if (loading === 'reload') {
     return (
-      <Card
-        onClick={() => dispatch(getTopicItemRequest({
-          topicId, programId, type, reload: true
-        }))}
-      >
-        <CardContent>Перезагрузить</CardContent>
-      </Card>
+      <ReloadButton onClick={() => dispatch(getTopicItemRequest({
+        topicId, programId, type, reload: true
+      }))}
+      />
     )
   }
 
-  if (loading || !data) {
+  if (loading) {
     return <LoadingScreen />
   }
 
-  console.log(data)
+  if (!data) {
+    return (
+      <ReloadButton onClick={() => dispatch(getTopicItemRequest({
+        topicId, programId, type, reload: true
+      }))}
+      />
+    )
+  }
 
   return (
     <Page

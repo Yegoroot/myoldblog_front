@@ -1,4 +1,4 @@
-/* eslint-disable max-len */
+/* eslint-disable no-underscore-dangle */
 import React from 'react'
 import { Link as RouterLink } from 'react-router-dom'
 import { PROGRAMS_URL, PUBLIC_PROGRAMS_URL } from 'src/constants'

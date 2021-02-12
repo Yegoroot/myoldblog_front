@@ -153,9 +153,10 @@ function TopicCreateForm({
           setContents(filtering, () => {
             if (record.type === 'image' || record.type === 'audio') {
               setLoading(true)
-              axios.post(`${API_BASE_URL}/topics/recorddelete`, { programId, topicId, recordId: record._id })
-                .then((res) => { handleSubmit() })
-                .catch((err) => { setLoading(false) })
+              axios.post(`${API_BASE_URL}/topics/recorddelete`,
+                { programId, topicId, recordId: record._id })
+                .then(() => { handleSubmit() })
+                .catch(() => { setLoading(false) })
             }
           })
         }
@@ -194,6 +195,7 @@ function TopicCreateForm({
               open={loading}
               // onClick={handleClose}
             >
+
               <LoadingScreen transparent />
             </Backdrop>
             <Grid

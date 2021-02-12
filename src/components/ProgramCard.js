@@ -87,6 +87,7 @@ function ProgramCard({ program, className, ...rest }) {
   const { user } = useAuth()
   const role = user ? user.role : null
   const handleDelete = () => {
+    // eslint-disable-next-line no-alert
     if (window.confirm(t('alert.do you want to delete program'))) {
       dispatch(deleteProgram({ programId: program.id }))
     }
@@ -133,6 +134,7 @@ function ProgramCard({ program, className, ...rest }) {
             {program.types.map((type) => (
               <Type
                 color={type.color}
+                // eslint-disable-next-line no-underscore-dangle
                 key={type._id}
               >
                 {type.title}

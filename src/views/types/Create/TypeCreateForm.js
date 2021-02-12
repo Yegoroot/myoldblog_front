@@ -85,7 +85,6 @@ function ProductCreateForm({
         handleChange,
         handleSubmit,
         isSubmitting,
-        setFieldValue,
         touched,
         values
       }) => (

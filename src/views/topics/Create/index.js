@@ -3,8 +3,8 @@ import { Container, makeStyles, Box } from '@material-ui/core'
 import Page from 'src/components/Page'
 import LoadingScreen from 'src/components/LoadingScreen'
 import { useSelector, useDispatch } from 'src/store'
-import { module as moduleTopic, getTopicItemRequest } from 'src/slices/topic'
-import { module as moduleProgram, getProgramListRequest } from 'src/slices/program'
+import { MODULE as MODULETopic, getTopicItemRequest } from 'src/slices/topic'
+import { MODULE as MODULEProgram, getProgramListRequest } from 'src/slices/program'
 
 import Header from './Header'
 import TopicCreateForm from './TopicCreateForm'
@@ -31,8 +31,8 @@ function TopicCreateView({ match, location }) {
     publish: true,
   })
 
-  const programs = useSelector((state) => state[moduleProgram].list.data)
-  const topic = useSelector((state) => state[moduleTopic].item)
+  const programs = useSelector((state) => state[MODULEProgram].list.data)
+  const topic = useSelector((state) => state[MODULETopic].item)
 
   useEffect(() => {
     if (topicId) {

@@ -1,9 +1,10 @@
+/* eslint-disable no-underscore-dangle */
 import React, { useState, useEffect } from 'react'
 import { Container, makeStyles } from '@material-ui/core'
 import Page from 'src/components/Page'
 import LoadingScreen from 'src/components/LoadingScreen'
 import { useSelector, useDispatch } from 'src/store'
-import { getProgramItemRequest, module } from 'src/slices/program'
+import { getProgramItemRequest, MODULE } from 'src/slices/program'
 import { instanceAxios } from 'src/utils/axios'
 import { API_BASE_URL } from 'src/constants'
 import Header from './Header'
@@ -21,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 function ProgramCreateView({ match }) {
   const classes = useStyles()
   const { programId } = match.params
-  const { loading, data } = useSelector((state) => state[module].item)
+  const { loading, data } = useSelector((state) => state[MODULE].item)
   const dispatch = useDispatch()
   const [allTypes, setTypes] = useState([])
   const [initialValues] = useState({

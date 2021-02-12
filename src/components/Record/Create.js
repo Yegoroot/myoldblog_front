@@ -73,6 +73,7 @@ function SectionCreate({
       return
     }
     if (section.type === 'image' || section.type === 'audio') {
+      // eslint-disable-next-line consistent-return
       if (!section.data.file) { return false }
       setLoading(true)
       const formData = new FormData()
@@ -80,14 +81,16 @@ function SectionCreate({
       formData.set('programId', programId)
       formData.set('topicId', topicId)
       formData.set('recordId', _id)
-      await axios.post(`${API_BASE_URL}/topics/record/${section.type}`, formData, { headers: { 'Content-Type': 'multipart/form-data' } })
+      await axios.post(`${API_BASE_URL}/topics/record/${section.type}`, formData,
+        { headers: { 'Content-Type': 'multipart/form-data' } })
         .then((res) => {
           const { data } = res
-          // WARN ЭТОТ КОМПОНЕНТ ТЕПЕРЬ ПОСЛЕ СРАБАТЫВАНИЯ onSave unmount поэтому состояние его изменять не нужно
+          // WARN ЭТОТ КОМПОНЕНТ ТЕПЕРЬ ПОСЛЕ
+          // СРАБАТЫВАНИЯ onSave unmount поэтому состояние его изменять не нужно
           // setLoading(false)
           onSave({ record: { ...section, data, _id } })
         })
-        .catch((err) => {
+        .catch(() => {
           // ЭТОТ КОМПОНЕНТ ТЕПЕРЬ ПОСЛЕ СРАБАТЫВАНИЯ onSave unmount
           // setLoading(false)
           onCancel(section._id)
@@ -198,7 +201,9 @@ function SectionCreate({
                   topicId={topicId}
                   programId={programId}
                   content={section}
-                  onChange={(file) => setSection((prev) => ({ ...prev, type: 'image', data: { file } }))}
+                  onChange={(file) => setSection(
+                    (prev) => ({ ...prev, type: 'image', data: { file } })
+                  )}
                 />
 
               ) : null }
@@ -209,7 +214,9 @@ function SectionCreate({
                   isEdit={isUpdate}
                   programId={programId}
                   content={section}
-                  onChange={(data) => setSection((prev) => ({ ...prev, type: 'audio', data: { ...section.data, ...data } }))}
+                  onChange={(data) => setSection(
+                    (prev) => ({ ...prev, type: 'audio', data: { ...section.data, ...data } })
+                  )}
                 />
 
               ) : null }

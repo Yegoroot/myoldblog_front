@@ -30,9 +30,7 @@ const Logo = () => {
   const [index, setIndex] = React.useState(0)
 
   React.useEffect(() => {
-    const intervalId = setInterval(() => setIndex((index) => index + 1),
-      4000 // every 3 seconds
-    )
+    const intervalId = setInterval(() => setIndex((i) => i + 1), 4000)
 
     return () => clearInterval(intervalId)
   })

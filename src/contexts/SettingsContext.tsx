@@ -4,7 +4,7 @@ import React, {
   useState
 } from 'react'
 import _ from 'lodash'
-import { THEMES, DEFAULT_LANGUAGE } from 'src/constants'
+import { THEMES, DEFAULT_LANGUAGE } from '../constants'
 
 const lang = localStorage.getItem('i18nextLng') || DEFAULT_LANGUAGE
 
@@ -34,7 +34,7 @@ export const restoreSettings = () => {
   return settings
 }
 
-export const storeSettings = (settings) => {
+export const storeSettings = (settings?: any) => {
   window.localStorage.setItem('settings', JSON.stringify(settings))
 }
 
@@ -43,7 +43,7 @@ const SettingsContext = createContext({
   saveSettings: () => { }
 })
 
-export const SettingsProvider = ({ settings, children }) => {
+export const SettingsProvider = ({ settings, children }: { settings?: any, children?: any }) => {
   const [currentSettings, setCurrentSettings] = useState(settings || defaultSettings)
 
   const handleSaveSettings = (update = {}) => {

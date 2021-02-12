@@ -10,7 +10,7 @@ import Form from './Components/Form'
 import Header from './Components/Header'
 import Annotations from './Components/Annotations'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   wavesurfer: {
     display: 'flex',
     alignItems: 'center'
@@ -144,7 +144,7 @@ const MyWaveSurfer = ({
 
     waveformElem.current.load(mediaLink)
 
-    waveformElem.current.on('ready', (e) => {
+    waveformElem.current.on('ready', () => {
       console.log('ready')
       setIsLoading(false)
       setValueSlider(waveformElem.current.params.minPxPerSec)

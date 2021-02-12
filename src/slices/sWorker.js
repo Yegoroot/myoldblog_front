@@ -7,10 +7,10 @@ const initialState = {
   onRegistrationServiceWorker: null,
 }
 
-export const module = 'sWorker'
+export const MODULE = 'sWorker'
 
 const slice = createSlice({
-  name: module,
+  name: MODULE,
   initialState,
   reducers: {
     // initServiceWorker(sWorker) {

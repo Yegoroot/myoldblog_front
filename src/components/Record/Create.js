@@ -73,6 +73,7 @@ function SectionCreate({
       return
     }
     if (section.type === 'image' || section.type === 'audio') {
+      // eslint-disable-next-line consistent-return
       if (!section.data.file) { return false }
       setLoading(true)
       const formData = new FormData()
@@ -87,7 +88,7 @@ function SectionCreate({
           // setLoading(false)
           onSave({ record: { ...section, data, _id } })
         })
-        .catch((err) => {
+        .catch(() => {
           // ЭТОТ КОМПОНЕНТ ТЕПЕРЬ ПОСЛЕ СРАБАТЫВАНИЯ onSave unmount
           // setLoading(false)
           onCancel(section._id)

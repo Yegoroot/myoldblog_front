@@ -3,7 +3,7 @@ import { Container, makeStyles } from '@material-ui/core'
 import Page from 'src/components/Page'
 import LoadingScreen from 'src/components/LoadingScreen'
 import { useSelector, useDispatch } from 'src/store'
-import { getUserItemRequest, module as moduleUser } from 'src/slices/user'
+import { getUserItemRequest, MODULE as MODULEUser } from 'src/slices/user'
 import Header from './Header'
 import UserCreateForm from './UserCreateForm'
 
@@ -27,7 +27,7 @@ function UserCreateView({ match }) {
     password: ''
   })
 
-  const { data, loading } = useSelector((state) => state[moduleUser].item)
+  const { data, loading } = useSelector((state) => state[MODULEUser].item)
 
   useEffect(() => {
     if (userId) {

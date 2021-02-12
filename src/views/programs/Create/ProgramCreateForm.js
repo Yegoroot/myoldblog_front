@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React, { /* useState */ } from 'react'
 import { useHistory } from 'react-router'
 import PropTypes from 'prop-types'

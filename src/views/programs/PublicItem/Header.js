@@ -97,7 +97,7 @@ const Header = ({
       topics: items.map((topic, index) => ({ _id: topic._id, sequence: index }))
     }
     await axios.post(`${API_BASE_URL}/topics/order`, data)
-      .then((res) => {
+      .then(() => {
         dispatch(getProgramItemRequest({ programId: program._id, type }))
       })
   }
@@ -161,12 +161,12 @@ const Header = ({
           </Box>
 
           <Box mx={-1}>
-            {program.types.map((type) => (
+            {program.types.map((_type) => (
               <Type
-                color={type.color}
-                key={type._id}
+                color={_type.color}
+                key={_type._id}
               >
-                {type.title}
+                {_type.title}
               </Type>
             ))}
           </Box>

@@ -10,7 +10,7 @@ import {
 } from '@material-ui/core'
 import Page from 'src/components/Page'
 import { useSelector, useDispatch } from 'react-redux'
-import { getProgramListRequest, module } from 'src/slices/program'
+import { getProgramListRequest, MODULE } from 'src/slices/program'
 import LoadingScreen from 'src/components/LoadingScreen'
 import { useTranslation } from 'react-i18next'
 import { useHistory, } from 'react-router-dom'
@@ -30,13 +30,13 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-function ProgramBrowseView({ location, match }) {
+function ProgramBrowseView({ location }) {
   const history = useHistory()
   const dispatch = useDispatch()
   const { t } = useTranslation()
   const classes = useStyles()
 
-  const { loading, data } = useSelector((state) => state[module].list)
+  const { loading, data } = useSelector((state) => state[MODULE].list)
   const urlParams = new URLSearchParams(location.search)
 
   const onDeleteParam = ({ label, value }) => {

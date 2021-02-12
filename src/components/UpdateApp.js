@@ -2,13 +2,13 @@ import React from 'react'
 import Button from '@material-ui/core/Button'
 import Snackbar from '@material-ui/core/Snackbar'
 import { useSelector, useDispatch } from 'react-redux'
-import { onUpdateServiceWorker, module } from 'src/slices/sWorker'
+import { onUpdateServiceWorker, MODULE } from 'src/slices/sWorker'
 import { useTranslation } from 'react-i18next'
 
 export default function SimpleSnackbar() {
   const dispatch = useDispatch()
   const { t } = useTranslation()
-  const { isNewVersionServiceWorker } = useSelector((state) => state[module])
+  const { isNewVersionServiceWorker } = useSelector((state) => state[MODULE])
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {

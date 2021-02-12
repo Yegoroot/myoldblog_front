@@ -59,8 +59,15 @@ function ProgramBrowseView({ location }) {
   }, [dispatch, filter])
 
   if (loading === 'reload') {
-    return <span onClick={() => dispatch(getProgramListRequest({ params: filter, reload: true }))}>Перезагрузить</span>
-  } if (loading || !data) {
+    return (
+      <span onClick={
+        () => dispatch(getProgramListRequest({ params: filter, reload: true }))
+      }
+      >
+        Перезагрузить
+      </span>
+    )
+  } if (loading) {
     return <LoadingScreen />
   }
 
@@ -92,13 +99,6 @@ function ProgramBrowseView({ location }) {
       title={t('menu.programs')}
     >
       <Container maxWidth={false}>
-
-        {/* <Typography
-          variant="h1"
-          color="textPrimary"
-        >
-          {t('programspage.choose')}
-        </Typography> */}
         <Box
           mb={3}
           mt={3}
@@ -111,7 +111,7 @@ function ProgramBrowseView({ location }) {
           />
         </Box>
         <Box mt={2}>
-          <Results programs={data} />
+          <Results programs={data || []} />
         </Box>
       </Container>
     </Page>

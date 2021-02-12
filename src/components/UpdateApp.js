@@ -17,15 +17,6 @@ export default function SimpleSnackbar() {
     dispatch(onUpdateServiceWorker())
   }
 
-  // console.log('redux: ', isNewVersionServiceWorker, 'storage parse: ', JSON.parse(localStorage.getItem('isNewVersionServiceWorker')))
-
-  // window.addEventListener('beforeunload', (e) => {
-  //   // the absence of a returnValue property on the event will guarantee the browser unload happens
-  //   dispatch(onUpdateServiceWorker())
-  //   console.log('asd')
-  //   // delete e.returnValue
-  // })
-
   return (
 
     <Snackbar

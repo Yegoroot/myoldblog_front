@@ -81,10 +81,12 @@ function SectionCreate({
       formData.set('programId', programId)
       formData.set('topicId', topicId)
       formData.set('recordId', _id)
-      await axios.post(`${API_BASE_URL}/topics/record/${section.type}`, formData, { headers: { 'Content-Type': 'multipart/form-data' } })
+      await axios.post(`${API_BASE_URL}/topics/record/${section.type}`, formData,
+        { headers: { 'Content-Type': 'multipart/form-data' } })
         .then((res) => {
           const { data } = res
-          // WARN ЭТОТ КОМПОНЕНТ ТЕПЕРЬ ПОСЛЕ СРАБАТЫВАНИЯ onSave unmount поэтому состояние его изменять не нужно
+          // WARN ЭТОТ КОМПОНЕНТ ТЕПЕРЬ ПОСЛЕ
+          // СРАБАТЫВАНИЯ onSave unmount поэтому состояние его изменять не нужно
           // setLoading(false)
           onSave({ record: { ...section, data, _id } })
         })
@@ -199,7 +201,9 @@ function SectionCreate({
                   topicId={topicId}
                   programId={programId}
                   content={section}
-                  onChange={(file) => setSection((prev) => ({ ...prev, type: 'image', data: { file } }))}
+                  onChange={(file) => setSection(
+                    (prev) => ({ ...prev, type: 'image', data: { file } })
+                  )}
                 />
 
               ) : null }
@@ -210,7 +214,9 @@ function SectionCreate({
                   isEdit={isUpdate}
                   programId={programId}
                   content={section}
-                  onChange={(data) => setSection((prev) => ({ ...prev, type: 'audio', data: { ...section.data, ...data } }))}
+                  onChange={(data) => setSection(
+                    (prev) => ({ ...prev, type: 'audio', data: { ...section.data, ...data } })
+                  )}
                 />
 
               ) : null }

@@ -34,16 +34,18 @@ export const restoreSettings = () => {
   return settings
 }
 
-export const storeSettings = (settings?: any) => {
+export const storeSettings = (settings?: any): void => {
   window.localStorage.setItem('settings', JSON.stringify(settings))
 }
 
 const SettingsContext = createContext({
   settings: defaultSettings,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   saveSettings: () => { }
 })
 
-export const SettingsProvider = ({ settings, children }: { settings?: any, children?: any }) => {
+export const SettingsProvider = ({ settings, children }
+  : { settings?: any, children?: any }) => {
   const [currentSettings, setCurrentSettings] = useState(settings || defaultSettings)
 
   const handleSaveSettings = (update = {}) => {

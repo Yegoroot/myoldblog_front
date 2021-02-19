@@ -79,7 +79,6 @@
     "react-text-transition": "^1.2.1",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
-    "redux-form": "^8.3.7",
     "redux-thunk": "^2.3.0",
     "suneditor-react": "^2.15.2",
     "use-state-with-callback": "^2.0.3",

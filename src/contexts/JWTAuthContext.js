@@ -83,6 +83,7 @@ const AuthContext = createContext({
   ...initialAuthState,
   method: 'JWT',
   login: () => Promise.resolve(),
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   logout: () => { },
   register: () => Promise.resolve()
 })

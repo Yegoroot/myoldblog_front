@@ -108,7 +108,7 @@ function TopicCreateForm({
           setStatus({ success: true })
           setSubmitting(false)
           setLoading(false)
-          enqueueSnackbar(message, { variant: 'success' })
+          enqueueSnackbar(message, { variant: 'success', autoHideDuration: 2000 })
           history.push(`${redirectUrl}`)
         })
     } catch (err) {

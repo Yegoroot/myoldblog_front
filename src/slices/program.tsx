@@ -1,17 +1,33 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit'
 import { instanceAxios as axios } from 'src/utils/axios'
 import { API_BASE_URL } from 'src/constants'
 // import { theSameDocument } from 'src/utils/slice'
-
 // import { enqueueSnackbar } from 'src/logic/notification'
+// import { AppDispatch } from 'src/store/rootReducer'
+import { AppDispatch } from 'src/store/index'
 
-const initialState = {
+type InitialState = {
+  list: {
+    loading: boolean;
+    data: any[];
+    total: number,
+    count: number
+  };
+  item: {
+    loading: boolean | string;
+    data: null | any;
+    topics: [] // all information
+  }
+}
+
+const initialState: InitialState = {
   list: {
     loading: false,
-    data: null, // []
-    total: null,
-    count: null
+    data: [], // []
+    total: 0,
+    count: 0
   },
   item: {
     loading: false,
@@ -56,33 +72,34 @@ const slice = createSlice({
     deleteProgram(program, action) {
       const { programId } = action.payload
       program.list.data = program.list.data.filter((el) => el.id !== programId)
-      // if (!program.list.data.length) {
-      //   program.list.data = null
-      // }
     },
 
   }
 })
 
-export const { reducer } = slice
+export const prefix = (type: string): string => (type === 'private' ? '/my' : '')
 
-export const prefix = (type) => (type === 'private' ? '/my' : '')
-
-const filter = (params) => {
-  if (!params) return {}
-  const fil = {}
-  if (params.language && params.language.length) {
-    fil.language = JSON.stringify(params.language)
+type Params = {
+  language: string[];
+  level: string[];
+  // limit: number;
+}
+const filter = (params: Params) => {
+  const f: any = {}
+  if (params.language?.length) {
+    f.language = JSON.stringify(params.language)
   }
-  if (params.level && params.level.length) {
-    fil.level = JSON.stringify(params.level)
+  if (params.level?.length) {
+    f.level = JSON.stringify(params.level)
   }
-  fil.limit = 35
-  return fil
+  f.limit = 35
+  return f
 }
 
 // INSIDE
-export const getProgramItem = ({ programId, type }) => async (dispatch) => {
+export const getProgramItem = (
+  { programId, type }: {programId: string, type: string}
+) => async (dispatch: AppDispatch) => {
   try {
     const programResponse = await axios.get(`${API_BASE_URL}/programs${prefix(type)}/${programId}`)
     const topicsResponse = await axios
@@ -97,18 +114,17 @@ export const getProgramItem = ({ programId, type }) => async (dispatch) => {
 }
 
 // OUTSIDE
-export const getProgramItemRequest = ({ programId, type }) => async (dispatch) => {
-  // if (
-  //   theSameDocument({ documentId: programId, getState, MODULE })
-  // ) {
-  //   return false
-  // }
+export const getProgramItemRequest = (
+  { programId, type }: {programId: string, type: string}
+) => async (dispatch: AppDispatch) => {
   dispatch(slice.actions.getProgramItemRequest())
   dispatch(getProgramItem({ programId, type }))
 }
 
 // OUTSIDE
-export const deleteProgram = ({ programId }) => async (dispatch) => {
+export const deleteProgram = (
+  { programId }: {programId: string}
+) => async (dispatch: AppDispatch) => {
   try {
     await axios.delete(`${API_BASE_URL}/programs/${programId}`)
     dispatch(slice.actions.deleteProgram({ programId }))
@@ -118,7 +134,9 @@ export const deleteProgram = ({ programId }) => async (dispatch) => {
 }
 
 // INSIDE
-export const getProgramList = ({ params, type }) => async (dispatch) => {
+const getProgramList = (
+  { params, type }: {params: Params, type: string}
+) => async (dispatch: AppDispatch) => {
   const response = await axios.get(`${API_BASE_URL}/programs${prefix(type)}`, {
     params: filter(params)
   }).catch(() => ({ data: null }))
@@ -128,13 +146,15 @@ export const getProgramList = ({ params, type }) => async (dispatch) => {
 }
 
 // OUTSIDE
-export const getProgramListRequest = ({ params, type }) => async (dispatch) => {
+export const getProgramListRequest = (
+  { params, type }: {params: Params, type: string}
+) => async (dispatch: AppDispatch) => {
   dispatch(slice.actions.getProgramListRequest())
   dispatch(getProgramList({ params, type }))
 }
 
 // OUTSIDE
-export const resetTopicsProgram = () => (dispatch) => {
+export const resetTopicsProgram = () => (dispatch: AppDispatch) => {
   dispatch(slice.actions.resetTopicsProgram())
 }
 
@@ -142,13 +162,16 @@ export const resetTopicsProgram = () => (dispatch) => {
  * menu program
  * we need to get program (for menu) if open topic page directly from google
  */
-export const getMenuProgram = (programId) => (dispatch, getState) => {
+export const getMenuProgram = (
+  programId: string
+) => async (dispatch: AppDispatch, getState: any) => {
   if (programId) {
     const program = getState().program.item.data
     if (!program || program.id !== programId) {
-      dispatch(getProgramItemRequest({ programId }))
+      dispatch(getProgramItemRequest({ programId, type: 'private' }))
     }
   }
 }
 
+export const { reducer } = slice
 export default slice

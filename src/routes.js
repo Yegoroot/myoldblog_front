@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React, {
   Suspense,
   Fragment,
@@ -89,7 +90,11 @@ const routes = [
       {
         exact: true,
         path: '/app',
-        component: () => <Redirect to="/app/programs" />
+        component: () => (
+          <Redirect
+            to="/app/programs"
+          />
+        )
       },
       // {
       //   exact: true,

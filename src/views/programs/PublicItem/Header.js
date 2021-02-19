@@ -86,7 +86,7 @@ const useStyles = makeStyles((theme) => {
 })
 
 const Header = ({
-  className, program, topics, type, ...rest
+  className, program, topics, ...rest
 }) => {
   const { t } = useTranslation()
   const dispatch = useDispatch()
@@ -103,7 +103,7 @@ const Header = ({
     }
     await axios.post(`${API_BASE_URL}/topics/order`, data)
       .then(() => {
-        dispatch(getProgramItemRequest({ programId: program._id, type }))
+        dispatch(getProgramItemRequest({ programId: program._id }))
       })
   }
 

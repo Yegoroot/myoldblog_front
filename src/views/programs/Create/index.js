@@ -37,7 +37,7 @@ function ProgramCreateView({ match }) {
 
   useEffect(() => {
     if (programId) {
-      dispatch(getProgramItemRequest({ programId, type: 'private' }))
+      dispatch(getProgramItemRequest({ programId }))
     }
     instanceAxios.get(`${API_BASE_URL}/types/`).then((res) => { setTypes(res.data.data) })
   }, [programId, dispatch])

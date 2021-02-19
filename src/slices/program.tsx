@@ -77,8 +77,6 @@ const slice = createSlice({
   }
 })
 
-export const prefix = (type: string): string => (type === 'private' ? '/my' : '')
-
 type Params = {
   language: string[];
   level: string[];
@@ -86,10 +84,10 @@ type Params = {
 }
 const filter = (params: Params) => {
   const f: any = {}
-  if (params.language?.length) {
+  if (params?.language?.length) {
     f.language = JSON.stringify(params.language)
   }
-  if (params.level?.length) {
+  if (params?.level?.length) {
     f.level = JSON.stringify(params.level)
   }
   f.limit = 35
@@ -98,12 +96,12 @@ const filter = (params: Params) => {
 
 // INSIDE
 export const getProgramItem = (
-  { programId, type }: {programId: string, type: string}
+  { programId }: {programId: string}
 ) => async (dispatch: AppDispatch) => {
   try {
-    const programResponse = await axios.get(`${API_BASE_URL}/programs${prefix(type)}/${programId}`)
+    const programResponse = await axios.get(`${API_BASE_URL}/programs/${programId}`)
     const topicsResponse = await axios
-      .get(`${API_BASE_URL}/topics${prefix(type)}?program=${programId}&sort=sequence`)
+      .get(`${API_BASE_URL}/topics?program=${programId}&sort=sequence`)
     dispatch(slice.actions.getProgramItem({
       programData: programResponse.data.data,
       topicsData: topicsResponse.data.data
@@ -115,10 +113,10 @@ export const getProgramItem = (
 
 // OUTSIDE
 export const getProgramItemRequest = (
-  { programId, type }: {programId: string, type: string}
+  { programId }: {programId: string}
 ) => async (dispatch: AppDispatch) => {
   dispatch(slice.actions.getProgramItemRequest())
-  dispatch(getProgramItem({ programId, type }))
+  dispatch(getProgramItem({ programId }))
 }
 
 // OUTSIDE
@@ -135,9 +133,9 @@ export const deleteProgram = (
 
 // INSIDE
 const getProgramList = (
-  { params, type }: {params: Params, type: string}
+  { params }: {params: Params}
 ) => async (dispatch: AppDispatch) => {
-  const response = await axios.get(`${API_BASE_URL}/programs${prefix(type)}`, {
+  const response = await axios.get(`${API_BASE_URL}/programs`, {
     params: filter(params)
   }).catch(() => ({ data: null }))
 
@@ -147,10 +145,10 @@ const getProgramList = (
 
 // OUTSIDE
 export const getProgramListRequest = (
-  { params, type }: {params: Params, type: string}
+  { params }: {params: Params}
 ) => async (dispatch: AppDispatch) => {
   dispatch(slice.actions.getProgramListRequest())
-  dispatch(getProgramList({ params, type }))
+  dispatch(getProgramList({ params }))
 }
 
 // OUTSIDE
@@ -168,7 +166,7 @@ export const getMenuProgram = (
   if (programId) {
     const program = getState().program.item.data
     if (!program || program.id !== programId) {
-      dispatch(getProgramItemRequest({ programId, type: 'private' }))
+      dispatch(getProgramItemRequest({ programId }))
     }
   }
 }

@@ -1,10 +1,11 @@
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react'
 import { Container, makeStyles, Box } from '@material-ui/core'
 import Page from 'src/components/Page'
 import LoadingScreen from 'src/components/LoadingScreen'
 import { useSelector, useDispatch } from 'src/store'
-import { MODULE as MODULETopic, getTopicItemRequest } from 'src/slices/topic'
-import { MODULE as MODULEProgram, getProgramListRequest } from 'src/slices/program'
+import { MODULE as moduleTopic, getTopicItemRequest } from 'src/slices/topic'
+import { MODULE as moduleProgram, getProgramListRequest } from 'src/slices/program'
 
 import Header from './Header'
 import TopicCreateForm from './TopicCreateForm'
@@ -31,14 +32,15 @@ function TopicCreateView({ match, location }) {
     publish: true,
   })
 
-  const programs = useSelector((state) => state[MODULEProgram].list.data)
-  const topic = useSelector((state) => state[MODULETopic].item)
+  const programs = useSelector((state) => state[moduleProgram].list.data)
+  const topic = useSelector((state) => state[moduleTopic].item)
 
   useEffect(() => {
+    const params = { fromDashboard: true }
     if (topicId) {
-      dispatch(getTopicItemRequest({ topicId, type: 'private' })) // get topic item
+      dispatch(getTopicItemRequest({ topicId })) // get topic item
     }
-    dispatch(getProgramListRequest({ type: 'private' })) // get program list
+    dispatch(getProgramListRequest({ params })) // get program list
   }, [dispatch, topicId])
 
   if (topic.loading || (topicId && !topic.data)) {

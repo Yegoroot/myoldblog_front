@@ -206,7 +206,6 @@ function ProgramCard({ program, ...rest }) {
 }
 
 ProgramCard.propTypes = {
-  className: PropTypes.string,
   program: PropTypes.object.isRequired
 }
 

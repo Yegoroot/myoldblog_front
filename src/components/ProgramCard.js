@@ -1,3 +1,5 @@
+/* eslint-disable no-alert */
+/* eslint-disable no-underscore-dangle */
 import React from 'react'
 import { Link as RouterLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
@@ -67,7 +69,16 @@ const useStyles = makeStyles((theme) => {
     buttons: {
       position: 'absolute',
       bottom: 0,
-      zIndex: 10
+      zIndex: 10,
+      width: '100%'
+    },
+    unpublish: {
+      position: 'absolute',
+      top: 25,
+      right: 0,
+      padding: '3px 15px',
+      background: '#f44336',
+      'border-radius': '4px 0px 0px 4px'
     },
     button: {
       backgroundColor: theme.palette.background.dark
@@ -87,7 +98,6 @@ function ProgramCard({ program, ...rest }) {
   const { user } = useAuth()
   const role = user ? user.role : null
   const handleDelete = () => {
-    // eslint-disable-next-line no-alert
     if (window.confirm(t('alert.do you want to delete program'))) {
       dispatch(deleteProgram({ programId: program.id }))
     }
@@ -99,7 +109,7 @@ function ProgramCard({ program, ...rest }) {
 
   return (
     <Card
-      className={clsx(classes.root, className)}
+      className={clsx(classes.root)}
       {...rest}
     >
       <Box
@@ -134,7 +144,6 @@ function ProgramCard({ program, ...rest }) {
             {program.types.map((type) => (
               <Type
                 color={type.color}
-                // eslint-disable-next-line no-underscore-dangle
                 key={type._id}
               >
                 {type.title}
@@ -152,6 +161,7 @@ function ProgramCard({ program, ...rest }) {
         { !perm_work_with_program(role) || !document_is_my_own(user, program.user) ? null
           : (
             <div>
+              {!program.publish && <div className={classes.unpublish}>Unpublish</div> }
               <Box
                 display="flex"
                 alignItems="center"

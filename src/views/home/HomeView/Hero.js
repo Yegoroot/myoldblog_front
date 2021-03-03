@@ -23,15 +23,10 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   image: {
-    perspectiveOrigin: 'left center',
-    transformStyle: 'preserve-3d',
-    perspective: 1500,
     '& > img': {
-      maxWidth: '65%',
-      height: 'auto',
-      transform: 'translateX(25%) rotateY(25deg) rotateX(15deg)',
-      backfaceVisibility: 'hidden',
-      boxShadow: theme.shadows[16]
+      [theme.breakpoints.up('md')]: {
+        transform: 'translateX(25%)'
+      }
     }
   },
 
@@ -60,7 +55,12 @@ const useStyles = makeStyles((theme) => ({
   },
   link: {
     width: 'max-content'
-  }
+  },
+  wrapInfo: {
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column-reverse'
+    }
+  },
 
 }))
 
@@ -77,7 +77,28 @@ const Hero = ({ className, ...rest }) => {
         <Grid
           container
           spacing={3}
+          className={classes.wrapInfo}
         >
+          <Grid
+            item
+            xs={12}
+            md={7}
+          >
+            <Box position="relative">
+              <div className={classes.shape}>
+                <img
+                  alt="Shapes"
+                  src="/static/home/shapes.svg"
+                />
+              </div>
+              <div className={classes.image}>
+                <img
+                  alt="Presentation"
+                  src="/static/images/home.png"
+                />
+              </div>
+            </Box>
+          </Grid>
           <Grid
             item
             xs={12}
@@ -113,26 +134,6 @@ const Hero = ({ className, ...rest }) => {
               {t('homepage.portfolio')}
             </Button>
             {/* </div> */}
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            md={7}
-          >
-            <Box position="relative">
-              <div className={classes.shape}>
-                <img
-                  alt="Shapes"
-                  src="/static/home/shapes.svg"
-                />
-              </div>
-              <div className={classes.image}>
-                <img
-                  alt="Presentation"
-                  src="/static/images/home.png"
-                />
-              </div>
-            </Box>
           </Grid>
         </Grid>
       </Container>

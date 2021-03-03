@@ -75,6 +75,10 @@ const routes = [
     path: '/register',
     component: lazy(() => import('src/views/auth/RegisterView'))
   },
+  {
+    exact: true,
+    path: '/api/v1/auth/google'
+  },
   /**
    * PRIVATE ROUTES
    */

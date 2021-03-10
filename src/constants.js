@@ -45,3 +45,12 @@ export const LANGUAGES = [
 export const DEFAULT_LANGUAGE = LANGUAGES.find(
   (lang) => navigator.language.match(lang)
 ) || 'en' // navigator.language - "en-US"
+
+/**
+ * Маршрут авторихации который будет обрабатываться специальным образом
+ * так как есть некоторые ньюансы для этого маршрута
+ *
+ * все дело в service-worker которы обрабатыва
+ * window.open(URL) не так как нужно мне
+ */
+export const routeAuthSocial = '/api/v1/auth/social'

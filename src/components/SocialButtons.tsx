@@ -1,14 +1,15 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core'
 import { useTranslation } from 'react-i18next'
-import { HOST } from 'src/constants'
+import { HOST, routeAuthSocial } from 'src/constants'
 
 const useStyles = makeStyles((/* theme */) => ({
   googleButton: {
     display: 'flex',
     cursor: 'pointer',
-    background: '#ae423a',
+    background: '#3a78ae',
     borderRadius: 4,
+    color: '#fff',
     paddingRight: 16,
     alignSelf: 'flex-start',
     fontSize: 'initial',
@@ -19,7 +20,8 @@ const useStyles = makeStyles((/* theme */) => ({
     fontWeight: 'bold',
     background: 'white',
     borderRadius: '4px 0px 0px 4px',
-    color: '#ae423a',
+    backgroundColor: '#fff',
+    color: '#3a78ae',
     paddingRight: 12,
     paddingLeft: 12,
     display: 'block'
@@ -29,13 +31,13 @@ const useStyles = makeStyles((/* theme */) => ({
 export const GoogleButton = () => {
   const classes = useStyles()
   const { t } = useTranslation()
-  const loginByGoogle = () => {
-    window.open(`${HOST}/api/v1/auth/google`, '_self')
+  const handleGoogleClick = () => {
+    window.open(`${HOST}${routeAuthSocial}/google`, '_self')
   }
   return (
     <div
       className={classes.googleButton}
-      onClick={loginByGoogle}
+      onClick={handleGoogleClick}
     >
       <span className={classes.googleLetter}>G</span>
       {t('btn.Sign in with google')}

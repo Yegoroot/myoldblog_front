@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable react/display-name */
 import React, {
   Suspense,
@@ -60,6 +61,11 @@ const routes = [
   },
   {
     exact: true,
+    path: '/home',
+    component: HomeView
+  },
+  {
+    exact: true,
     path: '/404',
     component: lazy(() => import('src/views/errors/NotFoundView'))
   },
@@ -74,10 +80,6 @@ const routes = [
     guard: GuestGuard,
     path: '/register',
     component: lazy(() => import('src/views/auth/RegisterView'))
-  },
-  {
-    exact: true,
-    path: '/api/v1/auth/google'
   },
   /**
    * PRIVATE ROUTES
@@ -263,11 +265,6 @@ const routes = [
     path: '*',
     layout: MainLayout,
     routes: [
-      {
-        exact: true,
-        path: '/home',
-        component: HomeView
-      },
       {
         component: () => <Redirect to="/404" />
       }

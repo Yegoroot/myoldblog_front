@@ -55,6 +55,7 @@ const useStyles = makeStyles((theme) => {
     title: {
       textDecoration: 'none',
       fontSize: '2.2rem',
+      fontWeight: 'bold',
       [theme.breakpoints.down('xs')]: {
         fontSize: '2rem',
       },
@@ -101,6 +102,7 @@ function ProgramCard({ program, ...rest }: {program: any}): any {
   const classes = useStyles()
   const { user } = useAuth()
   const { role } = user || { role: null }
+
   const handleDelete = (e: any) => {
     e.preventDefault()
     if (window.confirm(t('alert.do you want to delete program'))) {

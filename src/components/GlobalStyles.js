@@ -44,10 +44,15 @@ const useStyles = makeStyles((theme) => createStyles({
       },
     },
     table: {
+      borderSpacing: 0,
+      // '& th': {
+      //   background: theme.palette.text.primary,
+      //   color: theme.palette.background.default
+      // },
       '& td': {
         padding: 4,
         textAlign: 'center',
-        border: 'solid 1 #ccc'
+        // border: 'solid 1px #ccc'
       }
     },
     blockquote: {
@@ -71,14 +76,17 @@ const useStyles = makeStyles((theme) => createStyles({
     },
     h1: {
       fontWeight: 500,
-      fontSize: 40,
+      fontSize: '3rem',
       letterSpacing: '-0.24px',
       lineHeight: 1.167,
       marginTop: theme.spacing(6),
       marginBottom: theme.spacing(2),
-      // [theme.breakpoints.up('md')]: {
-      //   fontSize: 52
-      // }
+      [theme.breakpoints.down('sm')]: {
+        marginTop: 15
+      },
+      [theme.breakpoints.up('md')]: {
+        marginTop: 40
+      }
     },
     h2: {
       marginTop: theme.spacing(6),

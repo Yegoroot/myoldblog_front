@@ -132,8 +132,7 @@ function Header({ topic }) {
             color="textPrimary"
           >
             {topic.title}
-            { !user
-              || !document_is_my_own(user, topic.user)
+            { !user || !document_is_my_own(user, topic.user)
               || !perm_work_with_program(user.role) ? null
               : (
                 <>
@@ -196,7 +195,32 @@ function Header({ topic }) {
                 color="inherit"
                 component="span"
               >
-                {`${t('time.created')} ${moment(topic.createdAt).fromNow()}`}
+                <b>
+                  {t('time.created')}
+                  {' '}
+                  {' '}
+                </b>
+                {moment(topic.createdAt).fromNow()}
+              </Typography>
+
+            </div>
+            <div className={classes.badge}>
+              <SvgIcon
+                fontSize="small"
+                className={classes.badgeIcon}
+              >
+                <CalendarIcon />
+              </SvgIcon>
+              <Typography
+                variant="body2"
+                color="inherit"
+                component="span"
+              >
+                <b>
+                  {t('time.updated')}
+                  {'  '}
+                </b>
+                {moment(topic.updatedAt).fromNow()}
               </Typography>
             </div>
           </Box>

@@ -123,6 +123,9 @@ const useStyles = makeStyles((theme) => createStyles({
       backgroundColor: theme.palette.primary.main,
       border: 0,
       height: 1
+    },
+    b: {
+      color: theme.palette.text.primary
     }
   }
 

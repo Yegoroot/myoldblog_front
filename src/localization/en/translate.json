@@ -93,7 +93,8 @@
       "edit": "Edit"
     },
     "time": {
-      "created": "Created"
+      "created": "Created",
+      "updated": "Updated"
     },
     "menu": {
       "programs": "Programs",

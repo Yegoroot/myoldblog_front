@@ -23,7 +23,7 @@ const Editor = ({ onChange, content }) => {
         colorList: [['#f44336', '#3949ab', '#1c2025'], ['#4caf50', '#e6e5e8', '#8a85ff']],
         buttonList: [
           ['strike', 'fontColor', 'hiliteColor', 'bold', 'link'],
-          ['list', 'formatBlock'], ['codeView', 'undo', 'redo']
+          ['list', 'formatBlock', 'image'], ['removeFormat', 'codeView', 'undo', 'redo']
         ]
       }}
       lang={settings.lang}

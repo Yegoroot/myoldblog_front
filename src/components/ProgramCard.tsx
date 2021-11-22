@@ -152,7 +152,7 @@ function ProgramCard({ program, ...rest }: {program: any}): any {
               {program.title}
             </Typography>
 
-            {program.description && (
+            {typeof program.description === 'string' && (
             <Box pt={1}>
               <Typography
                 color="textSecondary"

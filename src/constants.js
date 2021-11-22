@@ -22,7 +22,7 @@ export const DOMEN = 'ikeepmy.com'
 
 export const HOST = process.env.NODE_ENV === 'production'
   ? 'https://ikeepmy.com'
-  : 'http://localhost:5000'
+  : 'http://localhost:4000'
 
 export const API_BASE_URL = `${HOST}/api/v1`
 export const UPLOADS_URL = `${HOST}/uploads`

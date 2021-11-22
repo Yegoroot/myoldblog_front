@@ -66,6 +66,7 @@ const slice = createSlice({
     },
     getProgramList(program, action) {
       const { data } = action.payload
+      console.log(data.data)
       program.list = { ...initialState.list, ...data }
       program.list.loading = false
     },
